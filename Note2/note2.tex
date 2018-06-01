@@ -1,0 +1,410 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{ctex}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{pythonhighlight}
+\usepackage[top=2.5truecm,bottom=2.5truecm,left=2.3truecm,right=2.3truecm,includefoot,xetex]{geometry}
+\usepackage{fancyhdr}
+\usepackage{subfigure}
+
+
+%字体设置
+\setCJKmainfont[BoldFont=SimHei]{SimSun}
+\setCJKfamilyfont{hei}{SimHei}
+\setCJKfamilyfont{kai}{KaiTi}
+\setCJKfamilyfont{fang}{FangSong}
+\newcommand{\hei}{\CJKfamily{hei}}
+\newcommand{\kai}{\CJKfamily{kai}}
+\newcommand{\fang}{\CJKfamily{fang}}
+
+%字号设置
+\newcommand{\chuhao}{\fontsize{42pt}{\baselineskip}\selectfont}
+\newcommand{\xiaochuhao}{\fontsize{36pt}{\baselineskip}\selectfont}
+\newcommand{\yihao}{\fontsize{28pt}{\baselineskip}\selectfont}
+\newcommand{\erhao}{\fontsize{21pt}{\baselineskip}\selectfont}
+\newcommand{\xiaoerhao}{\fontsize{18pt}{\baselineskip}\selectfont}
+\newcommand{\sanhao}{\fontsize{15.75pt}{\baselineskip}\selectfont}
+\newcommand{\xiaosanhao}{\fontsize{15pt}{\baselineskip}\selectfont}
+\newcommand{\sihao}{\fontsize{14pt}{\baselineskip}\selectfont}
+\newcommand{\xiaosihao}{\fontsize{12pt}{\baselineskip}\selectfont}
+\newcommand{\wuhao}{\fontsize{10.5pt}{\baselineskip}\selectfont}
+\newcommand{\xiaowuhao}{\fontsize{9pt}{\baselineskip}\selectfont}
+\newcommand{\liuhao}{\fontsize{7.875pt}{\baselineskip}\selectfont}
+\newcommand{\qihao}{\fontsize{5.25pt}{\baselineskip}\selectfont}
+%设置 section 属性
+\makeatletter
+\renewcommand\section{\@startsection{section}{1}{\z@}%
+{-1.5ex \@plus -.5ex \@minus -.2ex}%
+{.5ex \@plus .1ex}%
+{\normalfont\xiaosanhao\CJKfamily{hei}}}
+\makeatother
+%设置 subsection 属性
+\makeatletter
+\renewcommand\subsection{\@startsection{subsection}{1}{\z@}%
+{-1.25ex \@plus -.5ex \@minus -.2ex}%
+{.4ex \@plus .1ex}%
+{\normalfont\sihao\CJKfamily{hei}}}
+\makeatother
+%设置 subsubsection 属性
+\makeatletter
+\renewcommand\subsubsection{\@startsection{subsubsection}{1}{\z@}%
+{-1ex \@plus -.5ex \@minus -.2ex}%
+{.3ex \@plus .1ex}%
+{\normalfont\xiaosihao\CJKfamily{hei}}}
+\makeatother
+
+
+
+%行间距离
+\linespread{1.5}
+\setlength{\baselineskip}{20pt}
+
+%重定义
+\renewcommand{\contentsname}{\centerline { \xiaoerhao \textbf{目 \quad 录}}}
+\renewcommand{\abstractname}{摘要}
+\renewcommand{\refname}{参考文献}
+\renewcommand{\figurename}{图}
+\renewcommand{\tablename}{表}
+
+%\newcommand{\HRule}{\rule}{\linewidth}{0.5mm}}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\newcommand{\Hrule}{\rule{\linewidth}{0.3mm}}
+
+\begin{document}
+\begin{center}
+\HRule \\
+\vspace{6mm} %magenta \color{Mahogany}
+{ \erhao \kai {Python基本语法}}
+\HRule \\
+\end{center}
+
+\tableofcontents
+
+\newpage
+
+\section{序列}
+\subsection{序列定义及分类}
+Python的基本数据结构，序列中的元素有序排列，每个元素被分配一个序号(元素的位置，即索引index)。通过指定一个{\color{red}下标}索引值(a[0]、a[1]，索引)，可以访问到序列中的任何一个元素；通过{\color{red}切片}方式一次可以得到多个元素(a[0:3]，切片)。
+
+序列索引从0开始到N--1结束(N是序列中元素的个数)，或者从最后一个元素--1开始到--N结束。
+
+
+序列分类：{\color{red}字符串、列表、元组}
+
+成员关系运算符：{\color{red}in 、 not in}，用于判断一个元素是否属于一个序列。
+
+\subsection{序列操作符}
+
+\subsubsection{索引}
+\begin{itemize}
+\item sequence[index]
+\end{itemize}
+
+{\kai 索引值可以为负值，负数表示从右往左开始计数，最后一个元素索引为--1，倒数第二个为--2，以此类推。}
+
+\subsubsection{切片}
+\begin{itemize}
+\item sequence[start\_index : end\_index]
+\item sequence[start\_index : end\_index : step]
+\end{itemize}
+
+获取从开始索引到结束索引之间的一组连续的元素(不包括结束索引对应的元素)。
+
+{\kai 如果没有特别指定开始和结束索引值，切片操作从序列的最开始处开始，直到序列的最末端结束( sequence[ : ] )，且默认步长为1。}
+
+\begin{python}
+seq[index]						#获得下标为index的元素(索引)
+seq[index1 : index2] 	#获得下标从index1到index2间的元素集合(切片)
+seq * num							#序列重复num次
+seq1 + seq2 					#连接序列seq1和seq2
+element in seq				#判断element元素是否包含在seq中
+element not in seq		#判断element元素是否不包含再seq中
+\end{python}
+
+
+\begin{python}
+a = "Hello"
+a[0]						#"H"
+a[4]						#"o"
+a[-1]						#"o"
+a[-5]						#"H"
+a[1:3]					#"el"，不包含a[3]
+a[-1:-5:-1]			#"olle"，不包含a[-5]
+a * 2						#"HelloHello"
+b = "World."			
+c = a + b 			#"HelloWorld."
+"H" in a 				#True
+
+\end{python}
+
+\section{列表}
+字符串是一种不可变序列类型，只能由字符组成；列表内容可以修改，可以包含任意数据类型，列表中的元素也可以是列表({\kai \color{red}二维列表})。
+
+\subsection{创建列表}
+创建列表可以使用方括号( [ ] )，列表元素之间用逗号隔开，或者使用函数list()。
+\begin{python}
+listName = [elem1, elem2, elem3, ..., elemN]
+listName = list(sequence)
+\end{python}
+
+\begin{python}
+#使用方括号 [] 创建
+numList = [1, 2, 3, 4, 5]
+strList = ["A", "B", "C", "D"]
+mixList = [1, 1.1, "ABC", True]
+
+#使用函数 list() 创建
+emptyList = list()								#空列表
+numList = list(range(5))
+\end{python}
+
+\newpage
+\subsection{访问列表}
+列表与字符串类似，也可以通过索引和切片两种操作进行访问。
+\begin{itemize}
+\item 索引
+\item 切片
+\end{itemize}
+
+\noindent 一维列表遍历
+\begin{python}
+friends = ["Tom", "Jerry", "Bat"]
+
+#1. 
+for friend in friends:
+	print("Happy new year,", friend)
+	
+#2. 
+for i in range(len(friends)):
+	friend = friends[i]
+	print("Happ new year,", friend)
+\end{python}
+
+{\noindent \kai  二维列表的访问方式：\color{red}$listName[index1][index2]$}
+
+\begin{python}
+#二维列表
+list1 = [1001, 1002, 1003]
+list2 = [1004, 1005, 1006]
+twoDimList = [list1, list2]			#二维列表由list1和list2组成
+print(twoDimList[0][0])					#1001
+print(twoDimList[0][2])					#1003
+print(twoDimList[1][1])					#1005
+
+#遍历二维列表
+for i in range(len(twoDimList)):
+	for j in range(len(twoDimList[i])):
+		print("twoDimList[" + str(i) + "][" + str(j) + "]=", twoDimList[i][j])
+		#print("twoDimList[%d][%d]=%d" % (i, j, twoDimList[i][j]))
+\end{python}
+
+\subsection{修改列表}
+\begin{itemize}
+\item 添加元素
+\item 修改元素
+\item 删除元素
+\end{itemize}
+
+\begin{python}
+listName.append(elem)					#向列表尾部添加元素elem
+listName.insert(index, elem)	#将元素elem插入到列表中的指定索引位置index
+listName[index] = newElem			#直接使用赋值符号修改该索引的值
+listName.remove(elem)					#删除列表中指定的元素elem，只删除第一个匹配元素
+del listName[index]						#删除列表中指定索引位置的元素
+\end{python}
+
+\subsection{list常用内建函数}
+\begin{python}
+cmp(list1, list2)					#比较两个列表中的元素，(>:1; <:-1; =:0)
+len(list)									#返回列表元素个数
+max(list)									#返回最大元素
+min(list)									#返回最小元素
+sorted(list)							#返回一个从小到大排序的列表
+sum(list)									#列表求和(元素为数字)
+\end{python}
+
+\section{元组}
+\subsection{创建元组}
+创建元组可以使用圆括号( () )，元组元素之间用逗号隔开，或者使用函数tuple()。元组中的元素也可以是元组({\kai \color{red}二维元组})。
+
+{\kai\sanhao \color{red}元组不可被修改！}
+
+\begin{python}
+tupleName = (elem1, elem2, elem3, ..., elemN)
+tupleName = tuple(sequence)
+\end{python}
+
+\begin{python}
+#使用圆括号 () 创建
+numTuple = (1, 2, 3, 4, 5)
+strTuple = ("A", "B", "C", "D")
+mixTuple = (1, 1.1, "ABC", True)
+
+#使用函数 tuple() 创建
+numTuple = tuple(range(5))
+\end{python}
+\subsection{访问元组}
+元组访问与列表访问类似。
+
+\subsection{tuple常用函数}
+\begin{python}
+cmp(tuple1, tuple2)					
+len(tuple)									
+max(tuple)									
+min(tuple)									
+sorted(tuple)							
+sum(tuple)									
+\end{python}
+
+\section{字典--映射类型}
+
+映射类型也是Python中一种常见的数据结构类型，这种类型由键(Key)值(Value)对组成。一个键只能对应一个值，但是多个键可以对应相同的值。
+
+\subsection{创建字典}
+
+创建字典可以使用花括号( \{ \} )，每一个“键值对”元素用逗号分隔，“键值对”中间用冒号分隔。
+
+{ \kai ** 还可以使用函数dict()或函数fromkeys()}
+
+\begin{python}
+#使用花括号 {} 创建(普通方式)
+dictName = {key1:value1, key2:value2, key3:value3, ..., keyN:valueN}
+
+#使用 dict() 创建
+a = dict()												#空字典
+# *** (key,value)形式的列表
+dictName = dict( [ (key1,value1), (key2,value2) ] )
+#(key,value)形式的元组
+dictName = dict( ( (key1,value1), (key2,value2) ) )
+
+# *** 使用 {}.fromkeys() 创建
+#指定value值
+dictName = {}.fromkeys( (key1, key2, key3), value )
+#不指定value值，默认为None
+dictName = {}.fromkeys( (key1, key2, key3) )
+\end{python}
+
+\subsection{访问字典}
+使用方括号，指定相应的键(类似索引)。
+\begin{python}
+dictName[key]
+\end{python}
+
+{\kai \color{red} 字典中的值是无序的 }，因此遍历字典的方式与遍历序列不同。
+
+\begin{python}
+#1. 直接迭代
+for key in dictName:
+	print(dictName[key])
+
+
+#2. 使用 keys() 函数
+for key in dictName.keys():		#keys()函数返回dict_keys类型
+	print(dictName[key])
+
+#3. 使用 items() 函数
+for (key, value) in dictName.items():
+	print(dictName[key])
+\end{python}
+
+\begin{python}
+studentDict = {1001:"A", 1002:"B", 1003:"C"}
+for (key, value) in studentDict.items():
+	print("studentDict[%s] = %s" % ( str(key), str(value) ))
+\end{python}
+
+\subsection{更新字典}
+\subsubsection{修改、添加}
+通过赋值语句进行字典元素的修改与添加。
+\begin{python}
+dictName[key] = newValue
+\end{python}
+{\kai 如果key在原字典中不存在，则直接将新元素(键值对)添加到字典中；如果key已经存在，则newValue会覆盖原来字典key对应的值，从而实现了字典元素的修改功能，同时也相当于删除了原来的key对应的元素。}
+
+\subsubsection{删除元素}
+删除字典元素可以使用：del()函数、pop()函数或者del语句。
+
+\begin{python}
+#1. del函数
+del(dictName[key])				#删除键为key的元素
+
+#2. pop()函数
+dictName.pop(key)					#删除键为key的元素，返回value值
+
+#3. del 语句
+del dictName[key]					#删除键为key的元素
+\end{python}
+
+
+
+\section{集合}
+无序不重复的元素集；集合分为可变集合和不可变集合。
+
+\subsection{创建集合}
+创建可变集合可以使用花括号( \{ \} )，每一个元素使用逗号进行分隔；或者使用set()函数。
+
+创建不可变集合，使用frozenset()。
+
+\begin{python}
+#使用普通方式创建
+setName = {elem1, elem2, elem3, ..., elemN}
+
+#使用函数 set() 创建
+setName = set( [ "A", "B", "C", "D" ] )
+
+#使用函数 frozenset() 创建
+frozenSetName = frozenset( [ "A", "B", "C", "D" ] )
+
+copyOfSetA = set(a)							#a可以是string,list,tuple,set,dict(keys)
+copyOfFrozenSetA = frozenset(a)
+\end{python}
+
+\newpage
+\subsection{访问集合}
+集合中的元素无序并且不重复，无法获取集合中某个指定的元素，只能遍历整个集合来访问其中的所有元素。
+
+\begin{python}
+for elem in setName:
+	print(elem)
+
+#集合遍历例子	
+numSet = {1,2,3,4,5}
+for tmpNum in numSet:
+	print(tmpNum)
+\end{python}
+
+\subsection{更新集合}
+\subsubsection{添加元素}
+\begin{itemize}
+\item add()、update()
+\end{itemize}
+
+\begin{python}
+setA.add(elem)				#添加一个元素elem
+setB.update(setA)			#将集合setA中所有元素添加到集合setB中，去掉重复元素
+\end{python}
+
+\subsubsection{删除元素}
+
+\begin{itemize}
+\item remove()、pop()、discard()、clear()
+\end{itemize}
+
+\begin{python}
+# remove()
+setName.remove(elem)				#删除元素elem
+
+# pop()
+setName.pop()						#删除集合中的第一个元素，并返回该元素
+
+# discard()
+setName.discard(elem)			#删除元素elem
+
+# clear()
+setName.clear()					#删除集合中的所有元素
+\end{python}
+
+
+
+\end{document}
