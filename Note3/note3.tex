@@ -1,0 +1,93 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{ctex}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{pythonhighlight}
+\usepackage[top=2.5truecm,bottom=2.5truecm,left=2.3truecm,right=2.3truecm,includefoot,xetex]{geometry}
+\usepackage{fancyhdr}
+\usepackage{subfigure}
+
+
+%字体设置
+\setCJKmainfont[BoldFont=SimHei]{SimSun}
+\setCJKfamilyfont{hei}{SimHei}
+\setCJKfamilyfont{kai}{KaiTi}
+\setCJKfamilyfont{fang}{FangSong}
+\newcommand{\hei}{\CJKfamily{hei}}
+\newcommand{\kai}{\CJKfamily{kai}}
+\newcommand{\fang}{\CJKfamily{fang}}
+
+%字号设置
+\newcommand{\chuhao}{\fontsize{42pt}{\baselineskip}\selectfont}
+\newcommand{\xiaochuhao}{\fontsize{36pt}{\baselineskip}\selectfont}
+\newcommand{\yihao}{\fontsize{28pt}{\baselineskip}\selectfont}
+\newcommand{\erhao}{\fontsize{21pt}{\baselineskip}\selectfont}
+\newcommand{\xiaoerhao}{\fontsize{18pt}{\baselineskip}\selectfont}
+\newcommand{\sanhao}{\fontsize{15.75pt}{\baselineskip}\selectfont}
+\newcommand{\xiaosanhao}{\fontsize{15pt}{\baselineskip}\selectfont}
+\newcommand{\sihao}{\fontsize{14pt}{\baselineskip}\selectfont}
+\newcommand{\xiaosihao}{\fontsize{12pt}{\baselineskip}\selectfont}
+\newcommand{\wuhao}{\fontsize{10.5pt}{\baselineskip}\selectfont}
+\newcommand{\xiaowuhao}{\fontsize{9pt}{\baselineskip}\selectfont}
+\newcommand{\liuhao}{\fontsize{7.875pt}{\baselineskip}\selectfont}
+\newcommand{\qihao}{\fontsize{5.25pt}{\baselineskip}\selectfont}
+%设置 section 属性
+\makeatletter
+\renewcommand\section{\@startsection{section}{1}{\z@}%
+{-1.5ex \@plus -.5ex \@minus -.2ex}%
+{.5ex \@plus .1ex}%
+{\normalfont\xiaosanhao\CJKfamily{hei}}}
+\makeatother
+%设置 subsection 属性
+\makeatletter
+\renewcommand\subsection{\@startsection{subsection}{1}{\z@}%
+{-1.25ex \@plus -.5ex \@minus -.2ex}%
+{.4ex \@plus .1ex}%
+{\normalfont\sihao\CJKfamily{hei}}}
+\makeatother
+%设置 subsubsection 属性
+\makeatletter
+\renewcommand\subsubsection{\@startsection{subsubsection}{1}{\z@}%
+{-1ex \@plus -.5ex \@minus -.2ex}%
+{.3ex \@plus .1ex}%
+{\normalfont\xiaosihao\CJKfamily{hei}}}
+\makeatother
+
+
+
+%行间距离
+\linespread{1.5}
+\setlength{\baselineskip}{20pt}
+
+%重定义
+\renewcommand{\contentsname}{\centerline { \xiaoerhao \textbf{目 \quad 录}}}
+\renewcommand{\abstractname}{摘要}
+\renewcommand{\refname}{参考文献}
+\renewcommand{\figurename}{图}
+\renewcommand{\tablename}{表}
+
+%\newcommand{\HRule}{\rule}{\linewidth}{0.5mm}}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\newcommand{\Hrule}{\rule{\linewidth}{0.3mm}}
+
+\begin{document}
+\begin{center}
+\HRule \\
+\vspace{6mm} %magenta \color{Mahogany}
+{ \erhao \kai {Python基本语法}}
+\HRule \\
+\end{center}
+
+\tableofcontents
+
+\newpage
+
+\section{函数}
+
+
+
+
+
+\end{document}
+
